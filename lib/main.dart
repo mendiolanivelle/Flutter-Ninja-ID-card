@@ -13,7 +13,16 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class Ninjacard extends StatelessWidget {
+class Ninjacard extends StatefulWidget {
+  @override
+  _NinjacardState createState() => _NinjacardState();
+}
+
+class _NinjacardState extends State<Ninjacard> {
+
+
+int ninjalevel = 0;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -75,7 +84,7 @@ class Ninjacard extends StatelessWidget {
             SizedBox(height: 10,),
             Text
             (
-              '21',
+              '$ninjalevel',
               style: TextStyle
               (
                 fontSize: 28,
@@ -108,7 +117,18 @@ class Ninjacard extends StatelessWidget {
             )
           ],
         ),
-      )
+      ),
+      floatingActionButton: FloatingActionButton
+      (
+        onPressed: () 
+        {
+          setState(() {
+            ninjalevel++;
+          });
+        },
+        child: Icon(Icons.add),
+        backgroundColor: Colors.black,
+      ),
     );
   }
 }
